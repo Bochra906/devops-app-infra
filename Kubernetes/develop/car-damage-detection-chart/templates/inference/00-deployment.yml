@@ -1,38 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: car-damage-detection
+  name: car-damage-detection-inference
   labels:
-    app: car-damage-detection
+    app: car-damage-detection-inference
   namespace: car-damage-detection-develop
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: car-damage-detection
+      app: car-damage-detection-inference
   template:
     metadata:
       labels:
-        app: car-damage-detection
+        app: car-damage-detection-inference
     spec:
       containers:
-      - name: car-damage-detection
-        image: 443086871679.dkr.ecr.us-east-2.amazonaws.com/car-damage-detection-develop:1.0.0
-        imagePullPolicy: Always
+      - name: car-damage-detection-inference
+        image: {{ .Values.inference.container.image }}:{{ .Values.inference.container.tag }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
         env:
           - name: STEPS_PER_EPOCH
-            value: "100"
+            value: {{ .Values.inference.env.steps }}
 
           - name: EPOCHS
-            value: "40"
-
-
-        envFrom:
-        - secretRef:
-            name: car-damage-detection
+            value: {{ .Values.inference.env.epochs }}
 
         ports:
-        - containerPort: 8000
+        - containerPort: {{ .Values.inference.container.port }}
         
         resources:
           requests:

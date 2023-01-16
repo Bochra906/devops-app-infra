@@ -1,0 +1,13 @@
+apiVersion: v2
+name: car-damage-detection-chart
+version: 0.1.0
+description: A Helm chart for Kubernetes to deploy the inference process of the mask rcnn model
+
+type: application
+keywords:
+  - mask-rcnn
+  - azure blob
+  - flask api
+  - image segmentation
+
+home: 

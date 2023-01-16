@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 30Gi
-  storageClassName: car-damage-detection-ebs # this is default sc which already exists in the eks
+  storageClassName: car-damage-detection-sc # this is default sc which already exists in the eks
   

@@ -4,9 +4,10 @@ metadata:
   name: car-damage-detection
   namespace: car-damage-detection-develop
 spec:
+  type: {{ .Values.infernce.service.type }}  
   selector:
     app: car-damage-detection
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8000
+      port: {{ .Values.inference.service.port }} 
+      targetPort: {{ .Values.inference.container.port }}  

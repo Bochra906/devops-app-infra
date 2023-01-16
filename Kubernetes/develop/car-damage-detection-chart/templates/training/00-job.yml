@@ -2,25 +2,26 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: training-job
+  namespace: car-damage-detection-develop
 spec:
   template:
     spec:
       containers:
       - name: car-damage-detection-training
-        image: 443086871679.dkr.ecr.us-east-2.amazonaws.com/car-damage-detection_training-image:1.0.0
+        image: {{ .Values.training.container.image }}:{{ .Values.training.container.tag }}
         env:
           - name: STEPS_PER_EPOCH
-            value: "150"
+            value: {{ .Values.training.env.steps }}
           - name: EPOCHS
-            value: "40"
+            value: {{ .Values.training.env.epochs }}
         volumeMounts:
-          - name: logs-volume
-            mountPath: "/logs"
+          - name: weights-volume
+            mountPath: "/weights"
 
       restartPolicy: Never
 
       volumes:
-        - name: logs-volume
+        - name: weights-volume
           persistentVolumeClaim:
             claimName: weights-volume
 

@@ -1,0 +1,25 @@
+replicaCount: 1
+imagePullPolicy: Always
+
+
+inference:
+  container:
+    image: 
+    tag: v1
+    port: 8000
+  service:
+    type: ClusterIP
+    port: 80
+   
+  env:
+    steps:  "100"
+    epochs: "40"
+
+training:
+  container:
+    image: 
+    tag: v1
+  
+  env:
+     steps:  "100"
+     epochs: "40"
