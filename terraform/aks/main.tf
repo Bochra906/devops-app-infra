@@ -1,5 +1,6 @@
-data "azurerm_resource_group" "dev" {
-  name = var.resource_group_name
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
 }
 
 resource "azurerm_kubernetes_cluster" "example" {

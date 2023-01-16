@@ -26,8 +26,6 @@ spec:
           - name: EPOCHS
             value: "40"
 
-          - name: CAR_DAMAGE_ANALYZED_BUCKET
-            value: "car-damage-analyzed-develop"
 
         envFrom:
         - secretRef:
