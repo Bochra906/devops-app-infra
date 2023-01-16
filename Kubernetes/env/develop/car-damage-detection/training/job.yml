@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: training-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: car-damage-detection-training
+        image: 443086871679.dkr.ecr.us-east-2.amazonaws.com/car-damage-detection_training-image:1.0.0
+        env:
+          - name: STEPS_PER_EPOCH
+            value: "150"
+          - name: EPOCHS
+            value: "40"
+        volumeMounts:
+          - name: logs-volume
+            mountPath: "/logs"
+
+      restartPolicy: Never
+
+      volumes:
+        - name: logs-volume
+          persistentVolumeClaim:
+            claimName: weights-volume
+
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: worker-label
+                operator: In
+                values:
+                - ai
+      
+      tolerations:
+        - key: "worker-taint"
+          operator: "Equal"
+          value: "ai"
+          effect: "NoSchedule"

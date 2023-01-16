@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-damage-detection
+  labels:
+    app: car-damage-detection
+  namespace: car-damage-detection-develop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: car-damage-detection
+  template:
+    metadata:
+      labels:
+        app: car-damage-detection
+    spec:
+      containers:
+      - name: car-damage-detection
+        image: 443086871679.dkr.ecr.us-east-2.amazonaws.com/car-damage-detection-develop:1.0.0
+        imagePullPolicy: Always
+        env:
+          - name: STEPS_PER_EPOCH
+            value: "100"
+
+          - name: EPOCHS
+            value: "40"
+
+          - name: CAR_DAMAGE_ANALYZED_BUCKET
+            value: "car-damage-analyzed-develop"
+
+        envFrom:
+        - secretRef:
+            name: car-damage-detection
+
+        ports:
+        - containerPort: 8000
+        
+        resources:
+          requests:
+            cpu: "3500m"
+            memory: "1500Mi"
+          limits:
+            cpu: "3500m"
+            memory: "1500Mi"
+
+        # volumeMounts:
+        #   - name: logs-volume
+        #     mountPath: "/logs"
+
+      # volumes:
+      #   - name: logs-volume
+      #     persistentVolumeClaim:
+      #       claimName: weights-volume

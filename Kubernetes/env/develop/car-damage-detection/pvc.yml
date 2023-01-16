@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: weights-volume
+spec:
+  accessModes:
+    - ReadWriteMany # to allow many pods to r/w to the same PV
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 30Gi
+  storageClassName: car-damage-detection-ebs # this is default sc which already exists in the eks
+  

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: car-damage-detection-develop
+  labels:
+    environment: develop
+    app: car-damage-detection
