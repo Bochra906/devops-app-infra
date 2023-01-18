@@ -4,7 +4,7 @@ metadata:
   name: car-damage-detection-inference
   labels:
     app: car-damage-detection-inference
-  namespace: car-damage-detection-develop
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: car-damage-detection-inference
-        image: {{ .Values.inference.container.image }}:{{ .Values.inference.container.tag }}
+        image: {{ .Values.inference.container.image }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         env:
           - name: STEPS_PER_EPOCH

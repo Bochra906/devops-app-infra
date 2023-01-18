@@ -5,8 +5,8 @@ resource "azurerm_resource_group" "example" {
 
 resource "azurerm_kubernetes_cluster" "example" {
   name                = "car-damage"
-  location            = data.azurerm_resource_group.dev.location
-  resource_group_name = data.azurerm_resource_group.dev.name
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
   dns_prefix          = "car-damage"
   sku_tier            = "Free"
 

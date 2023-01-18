@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: car-damage-detection
-  namespace: car-damage-detection-develop
+  namespace: {{ .Values.namespace }}
 spec:
-  type: {{ .Values.infernce.service.type }}  
+  type: {{ .Values.inference.service.type }}  
   selector:
     app: car-damage-detection
   ports:

@@ -2,13 +2,13 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: training-job
-  namespace: car-damage-detection-develop
+  namespace: {{ .Values.namespace }}
 spec:
   template:
     spec:
       containers:
       - name: car-damage-detection-training
-        image: {{ .Values.training.container.image }}:{{ .Values.training.container.tag }}
+        image: {{ .Values.training.container.image }}
         env:
           - name: STEPS_PER_EPOCH
             value: {{ .Values.training.env.steps }}

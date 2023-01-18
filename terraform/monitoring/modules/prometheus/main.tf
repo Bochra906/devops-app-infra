@@ -5,3 +5,10 @@ resource "helm_release" "prometheus" {
   chart      = "prometheus"
   namespace  = var.namespace
 }
+
+resource "helm_release" "grafana" {
+  name = "grafana"
+  repository = "https://grafana.github.io/helm-charts"
+  chart = "grafana"
+
+}
