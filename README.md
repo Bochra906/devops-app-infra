@@ -7,6 +7,7 @@ In this part, we will focus on the three pillars of Observability:
 
 ## 1. Metrics
 We used Prometheus to collect metrics from the FastAPI application with the use of Prometheus Client that helps you to get metrics from the endpoint /metrics, then we can use Grafana to visualize the metrics stream in real-time a time series database.
+![prometheus](https://user-images.githubusercontent.com/60546216/213249096-e29606f5-61cb-4d15-81ed-1f04e4b974d5.png)
 
 
 ## 2. Logs
@@ -37,6 +38,7 @@ To automate the deployment, we created a **Helm Chart** for it which will be use
 To be noted, we can multiple additional labels to a deployment, we can change the image name and/or tag, we can specify the number of replicas,... The values that you can change can be visualized in the ``values.yaml`` file.
 
 We used **Argo CD** to automate deployment of my chart from my github repo.
+![argocd](https://user-images.githubusercontent.com/60546216/213249199-8cdb980f-e496-4a1b-9a92-b04b24287ff3.png)
 
 ## 3. Multi-environment setup
 
@@ -45,10 +47,12 @@ To be able to use multiple environments, we created three files : ``values-pre-p
 
 # Deployment
 We built both training and inference images using Docker then we will use Kubernetes to deploy the cluster in Microsoft Azure.
+![azure](https://user-images.githubusercontent.com/60546216/213249154-0519dab3-7ff8-4cfd-bdd5-699da4d4cc09.png)
 
 ## Deployment architecture
 
 This is the architecture for the Monitoring setup :
+![architecture](https://user-images.githubusercontent.com/60546216/213249064-fe08696f-0e09-456d-986d-244d9d8764f2.png)
 
 
 We used Helm Charts to deploy the inference process.
