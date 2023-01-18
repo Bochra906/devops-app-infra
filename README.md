@@ -13,6 +13,7 @@ We used Prometheus to collect metrics from the FastAPI application with the use 
 ## 2. Logs
 In order to enable logging in our application, DataDog was the primary choice as it allowed an intuitive User Interface and setting the agent was fairly simple as it was packaged in a Helm Chart with basic configuration.
 We also made sure to add the ``request_id`` in every log so that it can help us while debugging.
+![log](https://user-images.githubusercontent.com/60546216/213249870-2947b422-f76a-456b-8d18-3a6a887e4580.png)
 
 
 ## 3. Traces
