@@ -4,15 +4,15 @@ metadata:
   labels:
     serviceMonitorSelector: prometheus
   name: prometheus
-  namespace: car-damage-detection-develop
-spec:
+  namespace: {{ .Values.namespace }}
+spec: 
   endpoints:
   - interval: 30s
     targetPort: {{ .Values.inference.container.port }}
     path: /metrics
   namespaceSelector:
     matchNames:
-    - car-damage-detection-develop
+    - dev
   selector:
     matchLabels:
       operated-prometheus: "true"

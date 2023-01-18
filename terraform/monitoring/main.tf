@@ -47,3 +47,13 @@ module "prometheus" {
   namespace = kubernetes_namespace.example.id
 }
 
+
+module "datadog" {
+  source = "./modules/datadog"
+  providers = {
+    kubernetes = kubernetes
+    helm       = helm
+  }
+  namespace = kubernetes_namespace.example.id
+}
+
