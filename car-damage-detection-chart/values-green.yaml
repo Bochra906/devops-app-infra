@@ -1,6 +1,7 @@
 replicaCount: 1
 imagePullPolicy: IfNotPresent
 namespace: dev
+Color: green
 
 inference:
   container:
