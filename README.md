@@ -65,7 +65,4 @@ We used Helm Charts to deploy the inference process.
 ## Deployment strategy
 We decided to use the Blue/Green deployment strategy since it gives us instant rollout and rollback.
 We created two yaml files: values-blue.yaml and values-green.yaml, then we created a rollout because it can easily work with Argo CD: when we change the version and synch the application it will create all the kubernetes resources with the new version.
-<<<<<<< HEAD
 The deployment strategy didn't work, we aim to fix our code in the future.
-=======
->>>>>>> e9f1d7ea39dd1c441cf0317edd2af49e7aee9387
