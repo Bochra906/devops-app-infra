@@ -40,12 +40,11 @@ We used **Argo CD** to automate deployment of my chart from my github repo.
 
 ## 3. Multi-environment setup
 
-To be able to use multiple environments, we created three folders : develop, pre-prod and prod.
-We created a ``kustomization.yaml`` file in each folder in order to patch the environment name.
+To be able to use multiple environments, we created three files : ``values-pre-prod.yaml``, ``values-prod.yaml`` and ``values.yaml`` for the development environment in order to patch the environment name.
 
 
 # Deployment
-We will be building both training and inference using Docker then we will use Kubernetes in the deployment.
+We built both training and inference images using Docker then we will use Kubernetes to deploy the cluster in Microsoft Azure.
 
 ## Deployment architecture
 
@@ -55,3 +54,5 @@ This is the architecture for the Monitoring setup :
 We used Helm Charts to deploy the inference process.
 
 ## Deployment strategy
+We decided to use the Blue/Green deployment strategy since it gives us instant rollout and rollback.
+We created two yaml files: values-blue.yaml and values-green.yaml, then we created a rollout because it can easily work with Argo CD: when we change the version and synch the application it will create all the kubernetes resources with the new version.
