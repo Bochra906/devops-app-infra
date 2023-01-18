@@ -7,6 +7,7 @@ In this part, we will focus on the three pillars of Observability:
 
 ## 1. Metrics
 We used Prometheus to collect metrics from the FastAPI application with the use of Prometheus Client that helps you to get metrics from the endpoint /metrics, then we can use Grafana to visualize the metrics stream in real-time a time series database.
+![metric](https://user-images.githubusercontent.com/60546216/213253035-ecfa686a-0a94-419e-b29f-c44a3fd3eeba.png)
 ![prometheus](https://user-images.githubusercontent.com/60546216/213249096-e29606f5-61cb-4d15-81ed-1f04e4b974d5.png)
 
 
@@ -31,6 +32,7 @@ We split those different charts into 3 ``modules`` : argocd, datadog and prometh
 
 3. **Third Stack : Storage :** here we provisioned the **Azure Storage Blob** in which we will store the treated images after the inference process.
 
+![blob](https://user-images.githubusercontent.com/60546216/213253177-940f8e8f-75be-40ae-aa61-ae3dd18d0cb5.png)
 
 ## 2. Automated Deployment
 
