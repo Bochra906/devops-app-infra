@@ -15,6 +15,7 @@ We also made sure to add the ``request_id`` in every log so that it can help us 
 
 
 ## 3. Traces
+We used ddtrace which is a Datadog's tracing library for Python. It is used to trace requests as they flow across web servers, databases and microservices so that developers have great visibility into bottlenecks and troublesome requests.
 We opted for DataDog as it was natively adapted for such task and the agent was aleady deployed for logs collection. 
 
 # Automation
@@ -46,6 +47,7 @@ To be able to use multiple environments, we created three files : ``values-pre-p
 # Deployment
 We built both training and inference images using Docker then we will use Kubernetes to deploy the cluster in Microsoft Azure.
 
+
 ## Deployment architecture
 
 This is the architecture for the Monitoring setup :
@@ -56,3 +58,4 @@ We used Helm Charts to deploy the inference process.
 ## Deployment strategy
 We decided to use the Blue/Green deployment strategy since it gives us instant rollout and rollback.
 We created two yaml files: values-blue.yaml and values-green.yaml, then we created a rollout because it can easily work with Argo CD: when we change the version and synch the application it will create all the kubernetes resources with the new version.
+The deployment strategy didn't work, we aim to fix our code in the future.
