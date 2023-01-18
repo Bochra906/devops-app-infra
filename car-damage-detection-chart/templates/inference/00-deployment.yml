@@ -4,7 +4,7 @@ metadata:
   name: car-damage-detection-inference
   labels:
     app: car-damage-detection-inference
-  namespace: {{ .Values.namespace }}
+  
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -21,21 +21,15 @@ spec:
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         env:
           - name: STEPS_PER_EPOCH
-            value: {{ .Values.inference.env.steps }}
+            value: {{ .Values.inference.env.steps | quote }}
 
           - name: EPOCHS
-            value: {{ .Values.inference.env.epochs }}
+            value: {{ .Values.inference.env.epochs | quote }}
 
         ports:
         - containerPort: {{ .Values.inference.container.port }}
         
-        resources:
-          requests:
-            cpu: "3500m"
-            memory: "1500Mi"
-          limits:
-            cpu: "3500m"
-            memory: "1500Mi"
+        
 
         # volumeMounts:
         #   - name: logs-volume

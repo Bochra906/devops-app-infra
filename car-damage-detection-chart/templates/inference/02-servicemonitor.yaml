@@ -4,7 +4,7 @@ metadata:
   labels:
     serviceMonitorSelector: prometheus
   name: prometheus
-  namespace: {{ .Values.namespace }}
+  
 spec: 
   endpoints:
   - interval: 30s

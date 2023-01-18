@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: default-deny-ingress  # explicit deny on all pods in namespace
-  namespace: {{ .Values.namespace }}
+ 
 spec:
   podSelector: {}
   policyTypes:
@@ -12,7 +12,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: my-network-policy
-  namespace: {{ .Values.namespace }}
+
 spec:
   podSelector:
     matchLabels:

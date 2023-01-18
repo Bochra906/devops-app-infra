@@ -2,6 +2,6 @@ apiVersion: 1
 datasources:
   - name: Prometheus
     type: prometheus
-    url: http://prometheus-server:80/
+    url: http://prometheus-server.monitoring:80/
     access: proxy
     isDefault: true

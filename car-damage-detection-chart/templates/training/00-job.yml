@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: training-job
-  namespace: {{ .Values.namespace }}
+  
 spec:
   template:
     spec:
@@ -11,9 +11,9 @@ spec:
         image: {{ .Values.training.container.image }}
         env:
           - name: STEPS_PER_EPOCH
-            value: {{ .Values.training.env.steps }}
+            value: {{ .Values.training.env.steps | quote }}
           - name: EPOCHS
-            value: {{ .Values.training.env.epochs }}
+            value: {{ .Values.training.env.epochs | quote }}
         volumeMounts:
           - name: weights-volume
             mountPath: "/weights"
